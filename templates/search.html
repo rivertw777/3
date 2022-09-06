@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+    </head>
+    <body>
+        <header class="header">
+            {% include 'header.html' %}
+        </header>
+        <div class="main">
+            <div class="mainwrap">
+                <h3>키워드 "{{search_word}}" 검색 결과</h3>
+                <ul>
+                    {% if search_word not in keyword %}
+                        <h3>잘못된 키워드입니다..</h3>
+                    {% endif %}
+                    {%for product in Product %}
+                        {% if search_word in keyword and search_word==product.keyword%}
+                            <li>
+                                <a href="/detail/{{product.pid}}">
+                                    {% if product.check == '1' %}
+                                    <div class="item_condition_gg">
+                                        <span>판매완료</span>
+                                    </div>
+                                    {% endif %}
+                                    <img src="{{ url_for('static', filename='product_images/'+product.photo) }}">
+                                    <div class="main_title">
+                                        {{product.name}}
+                                    </div>
+                                    <div class="main_price">
+                                        {{product.price}}원
+                                    </div>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <footer class="footer">
+            {% include 'footer.html' %}
+        </footer>
+    </body>
+</html>

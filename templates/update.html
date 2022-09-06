@@ -1,0 +1,48 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert('{{messages[-1]}}')
+        </script>
+    {% endif %}
+{% endwith %}
+<!doctype html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+    </head>
+    <body>
+        <header class="header">
+            {% include 'header.html' %}
+        </header>
+        <div class="sale">
+            <div class="sale_wrap">
+                <h3>상품 수정</h3>
+                <form method="POST" enctype="multipart/form-data">
+                    {{form.csrf_token}}
+                    <div class="content">
+                        {{ form.hidden_tag() }}
+                        {{ form.photo }}
+                        <input type="text" name="name" class="sale_title" placeholder="제품 이름을 입력해주세요." autocomplete="off"/>
+                        <div class="price">
+                            <input type="text" name="price" class="sale_price" placeholder="￦ 가격을 입력해주세요." autocomplete="off"/>
+                            <span class="sale_price_won">원</span>
+                            <div class="check">
+                                <input type="checkbox" name="check" class="sale_check">
+                                <span class="sale_check_text">판매완료</span>
+                        </div>
+                        </div>
+                        {{ form.keyword }}
+                        <input type="text" name="descript" class="sale_descript" placeholder="게시글 내용을 입력해주세요." autocomplete="off"/>
+                        <input type="submit" value="제품수정" class="sale_submitbtn">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer class="footer">
+            {% include 'footer.html' %}
+        </footer>
+        </body>
+</html>

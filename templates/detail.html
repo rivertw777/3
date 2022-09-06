@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+    </head>
+    <body>
+        <header class="header">
+            {% include 'header.html' %}
+        </header>
+        <div class="detail">
+            <div class="detail_wrap">
+                {%for product in Product %}
+                    {%if product.pid == pid %}
+                        <div class="detail">
+                            <div class="detailImg">
+                                <img src="{{ url_for('static', filename='product_images/'+product.photo) }}">
+                            </div>
+                            <div class="detailText">
+                                <div class="detailText_top">
+                                    <p class="title">{{product.name}}</p>
+                                    <p class="price">{{product.price}}원</p>
+                                    <p class="writer">작성자 : {{product.uploader}}</p>
+
+
+                                    {% if session['user_id'] != product.uploader and session.get('user_id') %}
+                                        <form method="GET" action="/follow/{{product.uploader}}">
+                                            <a href="/follow">
+                                                <button class="follow">
+                                                    <img src="{{ url_for('static', filename='images/unfollow.png') }}">
+                                                </button>
+                                            </a>
+                                        </form>
+                                        {% for followdata in FollowData %}
+                                            {%if followdata.following != product.uploader %}
+                                                <form method="GET" action="/follow/{{product.uploader}}">
+                                                    <a href="/follow">
+                                                        <button class="follow">
+                                                            <img src="{{ url_for('static', filename='images/unfollow.png') }}">
+                                                        </button>
+                                                    </a>
+                                                </form>
+                                                {% if followdata.follower == session['user_id'] %}
+                                                    {% break %}
+                                                {% endif %}
+                                            {% else %}
+                                                {% if followdata.follower == session['user_id'] %}
+                                                    <form method="GET" action="/unfollow/{{followdata.fid}}">
+                                                        <a href="/unfollow">
+                                                            <button class="follow">
+                                                                <img src="{{ url_for('static', filename='images/follow.png') }}">
+                                                            </button>
+                                                        </a>
+                                                    </form>
+                                                    {% break %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="detailText_bottom" style="margin-top: 55px; border-top: 1px solid #eeeeee; padding-top: 20px;">
+                                    <p class="text">
+                                    {{product.descript}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <footer class="footer">
+            {% include 'footer.html' %}
+        </footer>
+    </body>
+</html>

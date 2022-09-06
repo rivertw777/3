@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+    </head>
+    <body>
+        <header class="header">
+            {% include 'header.html' %}
+        </header>
+<div class="main">
+            <div class="mainwrap">
+                <h3>{{id}}의 상점</h3>
+                <ul>
+                    {%for product in Product %}
+                        {% if product.uploader == id %}
+                            <li>
+                                <form method="GET" action="/detail/{{product.pid}}">
+                                    <input type="image" src="{{ url_for('static', filename='product_images/'+product.photo) }}" >
+                                    <div class="main_title">
+                                        {{product.name}}
+                                    </div>
+                                    <div class="main_price">
+                                        {{product.price}}원
+                                    </div>
+                                </form>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <footer class="footer">
+            {% include 'footer.html' %}
+        </footer>
+    </body>
+</html>

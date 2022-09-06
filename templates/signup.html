@@ -1,0 +1,49 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert('{{messages[-1]}}')
+        </script>
+    {% endif %}
+{% endwith %}
+<!doctype html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+    </head>
+    <body>
+        <header class="header">
+            {% include 'header.html' %}
+        </header>
+        <div class="sign">
+            <div class="sign_wrap">
+                <h3>회원가입</h3>
+                <form method="POST">
+                    {{form.csrf_token}}
+                    <div class="sign_content">
+                        <div class="id">
+                            <p class="id_title">아이디</p>
+                            <input type="text" class="id_input" placeholder="사용할 아이디를 입력해주세요." name="user_id" autocomplete="off"/>
+                        </div>
+                        <div class="pw">
+                            <p class="pw_title">비밀번호</p>
+                            <input type="text" class="pw_input" placeholder="비밀번호를 입력해주세요." name="user_pw" autocomplete="off"/>
+                        </div>
+                        <div class="pw_check">
+                            <p class="pw_check_title">비밀번호 확인</p>
+                            <input type="text" class="pw_check_input" placeholder="비밀번호를 한번 더 입력해주세요." name="re_pw" autocomplete="off"/>
+                        </div>
+                        <div class="btn">
+                            <button class="signbtn">가입하기</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer class="footer">
+                {% include 'footer.html' %}
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert('{{messages[-1]}}')
+        </script>
+    {% endif %}
+{% endwith %}
+<!doctype html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+    </head>
+    <body>
+        <header class="header">
+            {% include 'header.html' %}
+        </header>
+        <div class="main">
+            <div class="mainwrap">
+                <h3>지금 판매중인 상품들</h3>
+                <ul>
+                    {%for product in Product %}
+                        <li>
+                            <form method="GET" action="/detail/{{product.pid}}">
+                                {% if product.check == '1' %}
+                                    <div class="item_condition_gg">
+                                        <span>판매완료</span>
+                                    </div>
+                                {% endif %}
+                                <input type="image" src="{{ url_for('static', filename='product_images/'+product.photo) }}" >
+                                <div class="main_title">
+                                    {{product.name}}
+                                </div>
+                                <div class="main_price">
+                                    {{product.price}}원
+                                </div>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <footer class="footer">
+            {% include 'footer.html' %}
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,376 @@
+.main{
+    width:100%;
+    padding-bottom:150px;
+}
+.main .mainwrap{
+    width: 1000px;
+    margin: 0 auto;
+}
+.main .mainwrap h3{
+    font-size:20px;
+    font-weight:bold;
+}
+.main .mainwrap ul:after{
+    display:block;
+    clear:both;
+    height:0;
+    content: '';
+}
+.main .mainwrap li{
+    position:relative;
+    float:left;
+    width:32%;
+    margin-right:2%;
+    box-sizing: border-box;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    border:1px solid #eeeeee;
+    margin-top:20px;
+}
+.main .mainwrap li:nth-child(3n){
+    margin-right:0;
+}
+.main .mainwrap li img{
+    width:100%;
+    height:350px;
+}
+.main .mainwrap li input{
+    width:100%;
+    height:350px;
+}
+.main .mainwrap li .main_title{
+    padding:5px;
+    font-weight:bold;
+}
+.main .mainwrap li .main_price{
+    padding:0 5px 5px 5px;
+    font-size:17px;
+    color:red;
+}
+/*내정보 css*/
+.myinfo{
+    width:100%;
+    height:100%;
+    padding-bottom: 150px;
+}
+.myinfo .myinfo_wrap{
+    width:1000px;
+    margin: 0 auto;
+}
+.myinfo_wrap .follow{
+
+}
+.myinfo_wrap .follow h3{
+    font-size: 25px;
+}
+.myinfo_wrap .follow .follow_table{
+    width:100%;
+    border: 1px solid #eeeeee;
+    text-align:center;
+    padding: 15px 5px 0px 5px;
+    margin-top:20px;
+}
+.myinfo_wrap .follow .follow_table td{
+    padding-bottom:20px;
+}
+.myinfo_wrap .follow .follow_table .name{
+    color:#721cf4;
+    font-weight:bold;
+}
+.myinfo_wrap .follow .follow_table button{
+    background-color:#ffffff;
+    border:none;
+}
+
+.myinfo_wrap .item{
+    margin-top:40px;
+}
+
+.myinfo_wrap .item h3{
+    font-size: 25px;
+}
+
+.myinfo_wrap .item ul:after{
+    display: block;
+    clear: both;
+    content: "";
+    height: 0;
+}
+
+.myinfo_wrap .item ul li{
+    position: relative;
+    float:left;
+    width:32%;
+    box-sizing: border-box;
+    margin-right:2%;
+    border: 1px solid #eeeeee;
+    padding:15px;
+}
+.myinfo_wrap .item ul li:nth-child(3n){
+    margin-right:0;
+}
+.myinfo_wrap .item ul li img{
+    width:100%;
+    height:350px;
+}
+.myinfo_wrap .item .item_head{
+    margin-top:20px;
+}
+.myinfo_wrap .item .item_condition{
+    margin-top:15px;
+}
+.myinfo_wrap .item .item_condition span{
+    color:red;
+    font-size:20px;
+    display:block
+}
+.item_condition_gg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    background-color: rgb(0 0 0 / 45%);
+}
+.item_condition_gg span{
+    text-align: center;
+    display: block;
+    line-height: 380px;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: bold;
+}
+.myinfo_wrap .item .item_price{
+    margin-top:4px;
+}
+.myinfo_wrap .item .item_btn{
+    position:absolute;
+    right:15px;
+    bottom:15px;
+    background-color:#731cf5;
+    border:none;
+    color:#ffffff;
+    width: 90px;
+    height: 25px;
+    cursor:pointer;
+}
+
+/*회원가입 css*/
+.sign{
+    width:100%;
+    height:100%;
+    padding-bottom:150px;
+}
+.sign .sign_wrap h3{
+    width:600px;
+    margin: 0 auto;
+    font-size:21px;
+    font-weight:bold;
+}
+.sign .sign_wrap .sign_content{
+    width:500px;
+    margin:0 auto;
+    margin-top:20px;
+    background-color:#fafafa;
+    padding:50px;
+}
+.sign .sign_wrap .id{}
+.sign .sign_wrap .pw{ margin-top:20px; }
+.sign .sign_wrap .pw_check{ margin-top:20px; }
+
+.sign .sign_wrap .id .id_title,
+.sign .sign_wrap .pw .pw_title,
+.sign .sign_wrap .pw_check .pw_check_title
+{
+    font-size:17px;
+    font-weight:bold;
+}
+
+.sign .sign_wrap .id .id_input,
+.sign .sign_wrap .pw .pw_input,
+.sign .sign_wrap .pw_check .pw_check_input
+{
+    width:100%;
+    height:30px;
+    margin-top:10px;
+    border:1px solid #721cf4;
+}
+.sign .sign_wrap .btn{
+    margin-top:30px;
+}
+.sign .sign_wrap .btn .signbtn{
+    width:100%;
+    height:30px;
+    background-color:#721cf4;
+    color:#ffffff;
+    border:none;
+}
+
+/*로그인 css*/
+.login{
+    width:100%;
+    height:100%;
+    margin-top:50px;
+    padding-bottom:150px;
+}
+.login .login_wrap{
+    width:500px;
+    margin:0 auto;
+}
+.login .login_wrap .id{
+    border:1px solid #eeeeee;
+}
+.login .login_wrap .login_id .id_title{
+    display:block;
+    font-size:18px;
+    font-weight:bold;
+}
+.login .login_wrap .login_id .login_id_input{
+    width:100%;
+    height:30px;
+    margin-top:10px;
+    border:1px solid #721cf4;
+}
+.login .login_wrap .login_pw{
+    margin-top:20px;
+}
+.login .login_wrap .login_pw .pw_title{
+    display:block;
+    font-size:18px;
+    font-weight:bold;
+}
+.login .login_wrap .login_pw .login_pw_input{
+    width:100%;
+    height:30px;
+    margin-top:10px;
+    border:1px solid #721cf4;
+}
+.login .login_wrap .login_btn{
+    margin-top:20px;
+}
+.login .login_wrap .login_btn button{
+    width:100%;
+    height:30px;
+    background-color:#721cf4;
+    color:#ffffff;
+    border:none;
+    cursor:pointer;
+}
+.login .login_wrap .login_signup{
+    margin-top:10px;
+    text-align:center;
+}
+
+/*상세페이지 css*/
+.detail{
+    width:100%;
+    height:100%;
+    padding-bottom:150px;
+    margin-top:50px;
+}
+.detail .detail_wrap{
+    width:800px;
+    height:400px;
+    margin:0 auto;
+    position:relative;
+}
+.detail .detail_wrap .detailImg{
+    position:absolute;
+    left:0;
+    top:0;
+    width:400px;
+}
+.detail .detail_wrap .detailImg img{
+    width:100%;
+}
+.detail .detail_wrap .detailText{
+    position:absolute;
+    width:300px;
+    height:300px;
+    word-break:break-all;
+    right:30px;
+    top:0;
+}
+.detail .detail_wrap .detailText .title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.detail .detail_wrap .detailText .price{
+    position: absolute;
+    left: 0;
+    top: 40px;
+    font-size: 26px;
+    color: red;
+    font-weight: bold;
+}
+.detail .detail_wrap .detailText .writer{
+    position: absolute;
+    right: 50px;
+    top: 50px;
+}
+.detail .detail_wrap .detailText .follow{
+    position: absolute;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    top: 50px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+}
+.detail .detail_wrap .detailText_bottom{
+    margin-top: 55px;
+    border-top: 1px solid #eeeeee;
+    padding-top: 20px;
+}
+
+/* 상품등록/수정 css */
+.sale{
+    width:100%;
+    height:100%;
+    padding-bottom:150px;
+    margin-top:40px;
+}
+.sale .sale_wrap{
+    width:900px;
+    margin:0 auto;
+}
+.sale .sale_wrap h3{
+    font-size:20px;
+    font-weight:bold;
+}
+.sale .sale_wrap .content{
+    margin-top:10px;
+}
+.sale .sale_wrap .content input{
+    width:100%;
+    border:none;
+    border-bottom:1px solid #eeeeee;
+    padding-bottom:5px;
+    margin-top:20px;
+}
+.sale .sale_wrap .content .price{
+    position:relative;
+    margin-top:20px;
+}
+.sale .sale_wrap .content .price .sale_price{
+    width:70%;
+}
+.sale .sale_wrap .content .price .check{
+    position:absolute;
+    top:-5px;
+    right:0;
+}
+.sale .sale_wrap .content .sale_descript{
+    height:200px;
+    border:1px solid #eeeeee;
+}
+.sale .sale_wrap .content .sale_submitbtn{
+    background-color: #7826f5;
+    border: none;
+    height: 30px;
+    color: #ffffff;
+    cursor:pointer;
+}

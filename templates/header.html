@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="header_content">
+            {%if session.get('user_id')%}
+                <p class="user_check">{{session['user_id']}}님 반갑습니다.</p>
+            {% endif %}
+
+            <div class="header_top">
+                {%if session.get('user_id')%}
+                    <a href="/logout">
+                        로그아웃
+                    </a>
+                {%else%}
+                    <a href="/login">
+                        로그인 / 회원가입
+                    </a>
+                {%endif%}
+            </div>
+            <div class="header_hr"></div>
+            <div class="header_wrap">
+                <div class="logo">
+                    <a href="/">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}">
+                    </a>
+                </div>
+                <form method="GET" action="/search">
+                    <div class="search">
+                        <input type="text" placeholder="키워드를 입력하세요." name="search_word">
+                        <a href="/search">
+                            <button class="search_btn"></button>
+                        </a>
+                    </div>
+                </form>
+                {%if session.get('user_id')%}
+                <ul class="icon">
+                    <li class="info">
+                        <a href="/myinfo">
+                            <img src="{{ url_for('static', filename='images/info.png') }}">
+                            <p class="text">내정보</p>
+                        </a>
+                    </li>
+                    <li class="saleicon">
+                       <a href="/sale">
+                            <img src="{{ url_for('static', filename='images/sale.png') }}">
+                            <p class="text">판매하기</p>
+                        </a>
+                    </li>
+                </ul>
+                {%endif%}
+            </div>
+        </div>
+    </body>
+</html>

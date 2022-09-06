@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+    </head>
+    <body>
+        <header class="header">
+            {% include 'header.html' %}
+        </header>
+        <div class="myinfo">
+            <div class="myinfo_wrap">
+                <div class="follow">
+                    <h3>내 팔로잉</h3>
+                    <table class="follow_table">
+                        {% for followdata in FollowData %}
+                            {% if followdata.following != session['user_id'] and followdata.follower == session['user_id'] %}
+                                <tr>
+                                    <td class="name">{{followdata.following}}</td>
+                                    <td>
+                                        <form method="GET" action="/followingshop/{{followdata.following}}">
+                                            <a href="/followingshop" style="cursor:pointer;">
+                                                <button class="shop_btn">상점 바로가기</button>
+                                            </a>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form method="GET" action="/unfollow/{{followdata.fid}}">
+                                            <a href="/unfollow" style="cursor:pointer;">
+                                                <button class="cancel_btn">팔로우 취소</button>
+                                            </a>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="item">
+                    <h3>내 상점</h3>
+                    <ul class="item_ul">
+                        {%for product in Product %}
+                            {% if product.uploader == session['user_id'] %}
+                                <li>
+                                    <img src="{{ url_for('static', filename='product_images/'+product.photo) }}">
+                                    <p class="item_head">
+                                        {{product.name}}
+                                    </p>
+                                    {% if product.check == '0' %}
+                                        <div class="item_condition">
+                                            <span>판매중</span>
+                                        </div>
+                                    {% elif product.check == '1' %}
+                                        <div class="item_condition_gg">
+                                            <span>판매완료</span>
+                                        </div>
+                                    {% endif %}
+                                    <p class="item_price">
+                                        {{product.price}}원
+                                    </p>
+                                    <form method="GET" action="/update/{{product.pid}}">
+                                        <a href="/update">
+                                            <button class="item_btn">
+                                                수정하기
+                                            </button>
+                                        </a>
+                                    </form>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            {% include 'footer.html' %}
+        </footer>
+    </body>
+</html>
